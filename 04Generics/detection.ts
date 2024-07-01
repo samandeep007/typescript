@@ -92,3 +92,50 @@ as Fish: Looking at the toy as if it's a fish.
 swim !== undefined: Checking if the toy can swim (only fish can swim).
 return: Saying "Yes, it's a fish!" if the toy can swim.
    */
+
+
+//Discriminated Union
+interface Circle {
+    kind: "circle",
+    radius: number
+}
+
+interface Square {
+    kind: "square",
+    side: number
+}
+
+interface Rectangle {
+  kind: "rectangle",
+  length: number,
+  width: number  
+}
+
+type Shape = Circle | Square | Rectangle
+
+function getTrueShape(shape: Shape){
+  if(shape.kind === "circle"){
+    return Math.PI * shape.radius ** 2
+  }
+  
+
+  // return shape.side * shape.side
+}
+
+function getArea(shape: Shape){ //Exhaustive checking
+  switch(shape.kind){
+    case "circle":
+      return Math.PI * shape.radius ** 2
+    
+    case "square":
+      return shape.side * shape.side
+    
+    case "rectangle":
+      return shape.length * shape.width
+
+    default:
+      const _defaultforShape: never = shape // If we get here, something went wrong
+      return _defaultforShape
+  }
+}
+
