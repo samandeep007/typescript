@@ -62,7 +62,7 @@ function handleError(errmsg: string): never{
 
 //Never: The function never returns a value --> values which are never observed
 
-
+// Throws an exception or terminates the execution of the program
 
 
 
