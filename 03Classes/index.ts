@@ -18,7 +18,7 @@ const saman = new User("Samandeep0792@gmail.com", "Samandeep Singh");
 //Another way of declaring a class
 
 class Student {
-    private _courseCount = 1; //cannot access outside of the class
+    protected _courseCount = 1; //cannot access outside of the class
     readonly city: string = "Sitarganj"
 
     constructor(public email: string, public name: string, private userId: string){}; //No need to have that this dot thing anymore
@@ -48,7 +48,22 @@ const Sam = new Student("samandeep0792@gmail.com", "Samandeep Singh", "223");
 // Sam.deleteToken(); --> deleteToken is not accessible
 
 
+class SubStudent extends Student { //extends keyword is used to inherit from the parent class
 
+    //Private fields and methods are accessible within the private class only --> inherited classes can't use them
+
+    // name = "dffd"; //Bruhhh! seriously?? This is not possible man
+
+    isFamily: boolean = true; //added new property
+
+    changeCourseCount = () => {
+        this._courseCount = 4; //It is private and only accessible within class 'Student' --> as soon as you make it protected it will be available in the inherited class
+        
+
+
+    }
+
+}
 
 
 export {}
